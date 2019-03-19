@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>UT6-A14_Enrique</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        .parrafo{
+            color: brown;
+        }
+        #id1{
+            color: blue;
+        }
+      </style>
+
+</head>
+<body>
+        <form action="">
+            <label>Introduce un texto</label></br>
+            <input type="text" id="texto" name="texto"></input>
+            <input type="button" name="enviar" value="Añadir" onclick="setText();"></input>
+            <input type="button" name="borrar" value="Quitar"></input>
+        </form>
+    <script>
+        //definimos las variables parrafo y contenido.
+        var parrafo;
+        var contenido;
+        //usamos un bucle for para crear los 10 elementos de forma rápida.
+        for(let i=1; i<=10; i++){
+            //creamos el elemento "p" y lo almacenamos en parrafo.
+            parrafo=document.createElement("p");
+            //le añadimos el id al elemento parrafo.
+            parrafo.setAttribute("id",`id${i}`);
+            //le añadimos la misma clase a todos los parrafos.
+            parrafo.setAttribute("class","parrafo");
+            //Creamos el contenido del parrafo y lo almacenamos en contenido.
+            contenido=document.createTextNode(`Contenido del parrafo ${i}`);
+            //le agregamos al parrafo, el contenido creado.
+            parrafo.appendChild(contenido);
+            //finalmente agregamos el parrafo con el contenido al final del body.
+            document.body.appendChild(parrafo);
+        }
+
+        function setText(){
+            /*contamos el numero total de elementos UL creados para saber si hay
+            o no, UL creados.*/
+            var nListado=document.getElementsByTagName("ul").length;
+            //obtenemos el valor de la caja de texto.
+            var valor = document.getElementById("texto").value;
+            var ul;
+            var li;
+            //si no existen listados, lo creamos.
+            if(nListado==0 || nListado==null){
+            ul=document.createElement("ul");
+            //le añadimos un id al listado.
+            parrafo.setAttribute("id","id1");
+            li=document.createElement("li");
+            //Creamos el contenido del parrafo y lo almacenamos en contenido.
+            contenido=document.createTextNode(valor);
+            //le agregamos al listado, el contenido creado.
+            li.appendChild(contenido);
+            //finalmente agregamos el listado con el contenido al final del body.
+            document.body.appendChild(ul);
+            document.body.appendChild(li);
+            }else{
+                li=document.createElement("li");
+            //Creamos el contenido del listado y lo almacenamos en contenido.
+            contenido=document.createTextNode(valor);
+            //le agregamos al parrafo, el contenido creado.
+            li.appendChild(contenido);
+            //finalmente agregamos el listado con el contenido al final del body.
+            document.body.appendChild(li);
+            }
+        }
+        function delText(){
+
+           //obtenemos el valor de la caja de texto.
+           var valor = document.getElementById("texto").value;
+           var List = document.querySelector('#id1');
+           
+        }
+    </script>
+    
+</body>
+</html>
