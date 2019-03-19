@@ -9,7 +9,7 @@
         .parrafo{
             color: brown;
         }
-        #id1{
+        #id2{
             color: blue;
         }
       </style>
@@ -20,7 +20,7 @@
             <label>Introduce un texto</label></br>
             <input type="text" id="texto" name="texto"></input>
             <input type="button" name="enviar" value="Añadir" onclick="setText();"></input>
-            <input type="button" name="borrar" value="Quitar"></input>
+            <input type="button" name="borrar" value="Quitar" onclick="delText();"></input>
         </form>
     <script>
         //definimos las variables parrafo y contenido.
@@ -75,10 +75,20 @@
         }
         function delText(){
 
+           //obtenemos los elementos li que existen.
+           var elementosLi = document.getElementsByTagName("li");
            //obtenemos el valor de la caja de texto.
            var valor = document.getElementById("texto").value;
-           var List = document.querySelector('#id1');
-           
+
+           //accedemos a cada uno de los elementos li y averiguamos si contiene el texto obtenido
+           for (let i = 0; i < elementosLi.length; i++) {
+
+                var texto = elementosLi[i].textContent;
+                //Si el valor es igual al texto introducido, borramos el elemento.
+                if (texto === valor) {
+                    elementosLi[i].parentNode.removeChild(elementosLi[i])
+                }
+            }   
         }
     </script>
     
